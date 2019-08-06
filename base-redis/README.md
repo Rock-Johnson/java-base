@@ -74,3 +74,21 @@ maxmemory-samples 5
 *  事中：本地缓存结合限流和降级。基于注解的分布式限流组件
 *  事后：开启持久化配置，实现快速缓存的快速恢复。 Redis 的持久化机制
 
+### **分布式之数据库和缓存双写一致性方案解析**
+``` flow js
+st=>start: Start
+e=>end: End
+op1=>operation: My Operation
+op2=>operation: Stuff
+sub1=>subroutine: My Subroutine
+cond=>condition: Yes
+or No?
+c2=>condition: Good idea
+io=>inputoutput: catch something...
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e
+```
