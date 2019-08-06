@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: base-redis
+  redisson:
+    database: 0
+    mode: single
+    password:
+    pool:
+      conn-timeout: 3000
+      max-active: 8
+      max-idle: 16
+      max-wait: 3000
+      min-idle: 8
+      size: 10
+      so-timeout: 3000
+    single:
+      address: 192.168.99.122:6379
+    timeout: 3000
+
+
