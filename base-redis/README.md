@@ -75,7 +75,7 @@ maxmemory-samples 5
 *  事后：开启持久化配置，实现快速缓存的快速恢复。 Redis 的持久化机制
 
 ### **分布式之数据库和缓存双写一致性方案解析**
-``` flow js
+``` flow
 st=>start: Start
 e=>end: End
 op1=>operation: My Operation
