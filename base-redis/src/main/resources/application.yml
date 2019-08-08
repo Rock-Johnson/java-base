@@ -1,20 +1,20 @@
 spring:
   application:
     name: base-redis
-  redisson:
-    database: 0
-    mode: single
-    password:
-    pool:
-      conn-timeout: 3000
-      max-active: 8
-      max-idle: 16
-      max-wait: 3000
-      min-idle: 8
-      size: 10
-      so-timeout: 3000
-    single:
-      address: 192.168.99.122:6379
-    timeout: 3000
+  redis:
+    host: 192.168.99.122
+    port: 6379
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.99.122:5432/testdb?autoReconnect=true&useUnicode=true
+    username: postgres
+    password: 1234
+    hikari:
+      connection-test-query: select 1
+      minimum-idle: 1
+      maximum-pool-size: 5
+      pool-name: dbcp1
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
 
 

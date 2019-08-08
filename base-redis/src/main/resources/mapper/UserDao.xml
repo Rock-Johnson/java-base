@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.baseredis.cachebreakdown.dao.SysUserDao">
+    <resultMap id="BaseResultMap" type="com.github.baseredis.cachebreakdown.model.SysUser">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+        <result column="headImgUrl" jdbcType="VARCHAR" property="headimgurl" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="sex" jdbcType="BIT" property="sex" />
+        <result column="enabled" jdbcType="BIT" property="enabled" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+    </resultMap>
+
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insert" parameterType="com.github.baseredis.cachebreakdown.model.SysUser">
+    insert into sys_user (id, username, password,
+      nickname, headImgUrl, phone,
+      sex, enabled, type, createTime,
+      updateTime)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{nickname,jdbcType=VARCHAR}, #{headimgurl,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+      #{sex,jdbcType=BIT}, #{enabled,jdbcType=BIT}, #{type,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+
+    <insert id="insertSelective" parameterType="com.github.baseredis.cachebreakdown.model.SysUser">
+        insert into sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="headimgurl != null">
+                headImgUrl,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="headimgurl != null">
+                #{headimgurl,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=BIT},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=BIT},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.github.baseredis.cachebreakdown.model.SysUser">
+        update sys_user
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="headimgurl != null">
+                headImgUrl = #{headimgurl,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=BIT},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=BIT},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.github.baseredis.cachebreakdown.model.SysUser">
+    update sys_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      headImgUrl = #{headimgurl,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      enabled = #{enabled,jdbcType=BIT},
+      type = #{type,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <sql id="Base_Column_List">
+    id, username, password, nickname, headImgUrl, phone, sex, enabled, type, createTime,
+    updateTime
+  </sql>
+</mapper>
