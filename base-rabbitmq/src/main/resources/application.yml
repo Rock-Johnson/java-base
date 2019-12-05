@@ -1,0 +1,25 @@
+spring:
+  rabbitmq:
+    host: 192.168.99.122
+    port: 5672
+    virtual-host: testhost
+    username: zhy
+    password: zhy
+    template:
+      # 使用return-callback时必须设置mandatory为true
+      mandatory: true
+    # 消息发送到交换机确认机制,是否确认回调
+    # SIMPLE 使用默认回调函数  correlated 使用自定义 none 无回调函数
+    publisher-confirm-type: correlated
+    # 消息发送到队列确认机制，是否返回回调
+    publisher-returns: true
+    listener:
+      simple:
+        # 并发消费者初始化值
+        concurrency: 5
+        # 最大值
+        max-concurrency: 10
+        # 每个消费者每次监听时可拉取处理的消息数量
+        prefetch: 20
+        # 确认模式设置为手动签收
+        acknowledge-mode: manual
